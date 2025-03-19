@@ -1,0 +1,56 @@
+<div class="min-h-screen bg-gradient-to-b from-blue-400 via-blue-300 to-blue-400 flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+    <div class="text-center mb-6 jc-center">
+      <img src="/assets/profalogo.png" alt="Logo" class="logo-img mx-auto mb-4" />
+      <p class="center-text">Para acceder al sistema, ingrese su usuario y contraseña en los campos que se muestran a continuación</p>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <div class="relative container-input">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+            <i class="fa fa-user"><mat-icon class="icon-input">person</mat-icon></i>
+          </span>
+          <input id="username" type="text" formControlName="username" class="w-full border rounded-md pl-10 py-2"
+            placeholder="Ingrese su usuario" required />
+        </div>
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('username')?.hasError('required')" class="text-red-500">
+          Usuario es requerido
+        </div>
+      </div>
+      <div class="mb-6">
+        <div class="relative container-input">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+            <i class="fa fa-lock"><mat-icon class="icon-input">lock</mat-icon></i>
+          </span>
+          <input id="password" type="password" formControlName="password" class="w-full border rounded-md px-3 py-2"
+            placeholder="Ingrese su contraseña" required />
+          
+        </div>
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')" class="text-red-500">
+          Contraseña es requerida
+        </div>
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid"
+        class="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-md shadow-md transition">
+        <i class="fa fa-sign-in"></i> 
+        <mat-icon>login</mat-icon>
+        Ingresar
+      </button>
+    </form>
+    <div *ngIf="errorMessage" class="mt-4 text-red-500 font-bold">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+
+</div>
+
+<div class="toast-container fixed top-5 right-5 space-y-4">
+  <div *ngFor="let toast of toastService.getToasts()" class="p-4 rounded shadow-lg text-white" [ngClass]="{
+      'bg-green-500': toast.type === 'success',
+      'bg-red-500': toast.type === 'error',
+      'bg-blue-500': toast.type === 'info',
+      'bg-yellow-500': toast.type === 'warning'
+    }">
+    {{ toast.message }}
+  </div>
