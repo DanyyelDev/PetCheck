@@ -6,7 +6,7 @@
 .sidenav {
   width: 250px;
   height: 100%;
-  background-color: rgb(39, 48, 66);
+  background-color: #4B8D67FF;
   border-radius: 0;
   overflow-y: auto; 
   scrollbar-width: none; 
@@ -42,7 +42,7 @@ mat-expansion-panel{
   height: 60px;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(52, 118, 204);
+  background-color: #48bb78;
   color: white;
 }
 
