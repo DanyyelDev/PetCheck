@@ -1,0 +1,17 @@
+<div #cardContainer class="card-container">
+    <div *ngFor="let category of categories" class="e-card playing">
+        <div class="image"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="infotop">
+            <svg xmlns="https://www.svgrepo.com/show/526526/document-1.svg" fill="none" viewBox="0 0 24 24" class="icon">
+                <path fill="currentColor" d="M19.4133 4.89862L14.5863..."></path>
+            </svg>
+            <br>
+            {{ category.name }}
+            <br>
+            <div class="name">{{ category.author }}</div>
+        </div>
+    </div>
+</div>

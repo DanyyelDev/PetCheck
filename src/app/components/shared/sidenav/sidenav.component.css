@@ -6,7 +6,7 @@
 .sidenav {
   width: 250px;
   height: 100%;
-  background-color: #4B8D67FF;
+  background: linear-gradient(744deg, #4ace30, #089408 60%, #d0d316);
   border-radius: 0;
   overflow-y: auto; 
   scrollbar-width: none; 
@@ -21,7 +21,7 @@ mat-expansion-panel{
 }
 
 .item:hover {
-  background-color: rgb(67, 110, 202);
+  filter: brightness(85%);
 }
 
 .container-options-list {
@@ -42,7 +42,7 @@ mat-expansion-panel{
   height: 60px;
   display: flex;
   justify-content: space-between;
-  background-color: #48bb78;
+  background: linear-gradient(744deg, #60ff40, #089408 60%, #e7eb00);
   color: white;
 }
 
@@ -67,7 +67,7 @@ mat-expansion-panel{
 }
 
 .icon-logout:hover{
-  color: rgb(66, 81, 110);
+  filter: brightness(70%);
 }
 
 a{
@@ -85,5 +85,5 @@ mat-panel-title{
 }
 
 a:hover{
-  color: rgb(66, 81, 110);
+  filter: brightness(40%);
 }
