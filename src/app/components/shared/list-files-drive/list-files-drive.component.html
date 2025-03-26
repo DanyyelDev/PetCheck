@@ -1,0 +1,16 @@
+<div class="mis-documentos-container">
+    <h2>📂 Mis Documentos</h2>
+    <mat-list class="document-list">
+      <mat-list-item class="document-item" *ngFor="let file of pdfFiles">
+        <span>{{ file.name }}</span>
+        <button mat-icon-button (click)="viewDocument(file.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+<div  class="document-container" *ngIf="selectedFileUrl">
+  <h3>Visualizando Documento</h3>
+  <iframe [src]="selectedFileUrl" class="document-frame" width="80%" height="600px"></iframe>
+</div>
