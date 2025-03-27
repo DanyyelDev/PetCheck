@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -27,11 +27,17 @@ export class SidenavComponent {
   option1Expanded = false;
   option2Expanded = false;
 
+  constructor(private router: Router){}
+
   toggleOption1() {
     this.option1Expanded = !this.option1Expanded;
   }
 
   toggleOption2() {
     this.option2Expanded = !this.option2Expanded;
+  }
+
+  onSubmit() {
+    this.router.navigate(['../home']);
   }
 }

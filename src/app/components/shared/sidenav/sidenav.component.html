@@ -8,9 +8,10 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-list class="container-options-list">
-          <a class="small" routerLink="registro-actividad">1. Reportes</a>
-          <a class="small" routerLink="gestionar-actividad">2. Documentos</a>
-          <a class="small" routerLink="report-activities">3. otros</a>
+          <a class="small" routerLink="about">- About -</a>
+          <a class="small" routerLink="home">1. Reportes</a>
+          <a class="small" routerLink="home">2. Documentos</a>
+          <a class="small" routerLink="home">3. otros</a>
         </mat-list>
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -33,7 +34,7 @@
       </button>
       <span class="spacer"></span>
       <div class="container-logout">
-        <mat-icon class="icon-logout">
+        <mat-icon class="icon-logout" (click)="onSubmit()">
           pets
         </mat-icon>
         PetCheck

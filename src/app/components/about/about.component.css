@@ -1,0 +1,60 @@
+.about-container {
+    padding: 40px;
+    text-align: center;
+    background-color: #f0f8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.about-title {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.about-text {
+    color: #555;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.about-image {
+    max-width: 400px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-subtitle {
+    color: #333;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.about-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.about-list li {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.about-list li:before {
+    content: "";
+    /* Icono de patita */
+    margin-right: 10px;
+}
