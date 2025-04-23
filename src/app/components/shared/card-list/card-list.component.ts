@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-list',
@@ -11,13 +12,15 @@ export class CardListComponent {
   @ViewChild('cardContainer') cardContainer!: ElementRef;
 
   categories = [
-    { name: 'Plantillas', author: '...........' },
+    { name: 'Inicial', author: '...........' },
     { name: 'Actas', author: '...........' },
     { name: 'Asignaciones', author: '...........' },
     { name: 'Log de errores', author: '...........' },
     { name: 'Informes', author: '...........' },
     /* { name: 'Blockchain', author: 'CryptoMaster' } */
-  ];  
+  ]; 
+
+  constructor(private router: Router){}
 
   ngAfterViewInit() {
     const slider = this.cardContainer.nativeElement;
@@ -30,5 +33,9 @@ export class CardListComponent {
     // Agregar eventos a los botones
     document.getElementById('leftBtn')?.addEventListener('click', scrollLeft);
     document.getElementById('rightBtn')?.addEventListener('click', scrollRight);
+  }
+
+  getRoute(categoryName: string) {
+    this.router.navigate([ '/home/'+ categoryName ]);
   }
 }
