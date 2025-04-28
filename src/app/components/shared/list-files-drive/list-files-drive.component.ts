@@ -18,20 +18,22 @@ import { DocDrive } from '../../../../types';
   styleUrl: './list-files-drive.component.css'
 })
 export class ListFilesDriveComponent {
- /*  pdfFiles: DocDrive[] = [
-    { id: '11aKhwi9hE4YEEdIj1mePnnEH_4RZB9eQ', name: '1. Vista de información' },
-    { id: '1hP8W2q6PUtDXIO7uIcK-7fGuhn_VHPey', name: '2. Vista de despliegue' },
-    { id: '1oyRsKQWY_cJhCrvdHMQYsRb3heyoa97-', name: '3. Vista de contexto' }
-  ]; */
   @Input() pdfFiles: DocDrive[] = [];
   @Input() title: string = "";
 
   constructor(private sanitizer: DomSanitizer) {}
   
   selectedFileUrl: SafeResourceUrl | null = null;
+  selectedFileId: string | null = null; // Nueva propiedad para rastrear el ID del archivo seleccionado
 
   viewDocument(fileId: string) {
+    this.selectedFileId = fileId; // Guarda el ID del archivo que se está visualizando
     const url = `https://drive.google.com/file/d/${fileId}/preview`;
     this.selectedFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  minimizeDocument() {
+    this.selectedFileUrl = null;
+    this.selectedFileId = null; // Limpia el ID del archivo seleccionado al minimizar
   }
 }
