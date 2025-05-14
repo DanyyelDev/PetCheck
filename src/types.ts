@@ -56,4 +56,5 @@ export interface MedicalRecord {
   weight: number;
   notes: string;
   relatedAppointment?: Appointment;
+  showDetails?: boolean;
 }
