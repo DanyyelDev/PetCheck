@@ -1,0 +1,69 @@
+<h2>Crear Nueva Cita</h2>
+<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="container-box">
+        <div class="box-1">
+            <div class="form-group mini-box">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Mascota:</mat-label>
+                    <mat-select formControlName="pet">
+                        <mat-option *ngFor="let pet of pets" [value]="pet">{{ pet.name }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="appointmentForm.get('pet')?.invalid && (appointmentForm.get('pet')?.dirty || appointmentForm.get('pet')?.touched)">
+                        La mascota es requerida.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="box-2">
+            <div class="form-group mini-box">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Veterinario:</mat-label>
+                    <mat-select formControlName="veterinarian">
+                        <mat-option *ngFor="let veterinarian of veterinarians" [value]="veterinarian">{{
+                            veterinarian.name
+                            }}</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="appointmentForm.get('veterinarian')?.invalid && (appointmentForm.get('veterinarian')?.dirty || appointmentForm.get('veterinarian')?.touched)">
+                        El veterinario es requerido.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="box-3">
+            <div class="form-group mini-box">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Fecha y Hora:</mat-label>
+                    <input matInput type="datetime-local" formControlName="dateTime">
+                    <mat-error
+                        *ngIf="appointmentForm.get('dateTime')?.invalid && (appointmentForm.get('dateTime')?.dirty || appointmentForm.get('dateTime')?.touched)">
+                        La fecha y hora son requeridas.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="box-4">
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Motivo de la Cita:</mat-label>
+                    <textarea matInput formControlName="reason"></textarea>
+                    <mat-error
+                        *ngIf="appointmentForm.get('reason')?.invalid && (appointmentForm.get('reason')?.dirty || appointmentForm.get('reason')?.touched)">
+                        El motivo es requerido.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Notas Adicionales:</mat-label>
+                    <textarea matInput formControlName="notes"></textarea>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </div>
+
+    <button mat-raised-button type="submit" [disabled]="!appointmentForm.valid">Crear Cita</button>
+</form>

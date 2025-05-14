@@ -1,0 +1,101 @@
+/* General container styling */
+.medical-record-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f9fff9; /* Fondo similar al verde claro */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2, h3 {
+  color: #2b7a2b; /* Verde oscuro para encabezados */
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+}
+
+/* Tarjetas */
+mat-card {
+  background-color: #f6fef6;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #006400;
+}
+
+mat-card-subtitle {
+  color: #4c994c;
+  font-size: 1.2rem;
+}
+
+/* Botones */
+mat-card-actions button {
+  margin-right: 10px;
+}
+
+button[mat-button] {
+  background-color: #28a745;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 8px 15px;
+}
+
+button[mat-button]:hover {
+  background-color: #218838;
+}
+
+button[mat-button][color="warn"] {
+  background-color: #dc3545;
+}
+
+button[mat-button][color="warn"]:hover {
+  background-color: #c82333;
+}
+
+/* Inputs */
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Prescripciones */
+.prescription {
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+/* Notas adicionales */
+.medical-record-container p {
+  color: #555555;
+  line-height: 1.5;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .medical-record-container {
+    padding: 10px;
+  }
+
+  mat-card {
+    padding: 10px;
+  }
+
+  button[mat-button] {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+}

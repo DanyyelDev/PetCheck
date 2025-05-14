@@ -1,0 +1,129 @@
+h2 {
+  color: #008000;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+form {
+  background-color: #f0f8f0;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-box {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "box-1 box-2 box-3"
+    "box-4 box-4 box-4"
+    "box-4 box-4 box-4";
+}
+
+.box-1 { grid-area: box-1; }
+.box-2 { grid-area: box-2; }
+.box-3 { grid-area: box-3; }
+.box-4 { grid-area: box-4; }
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-field {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+input[type="datetime-local"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #008000;
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.3);
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' fill-opacity='.4' d='M2 0L0 2h4zm0 3L0 5h4z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 12px;
+  padding-right: 30px;
+}
+
+select:focus {
+  border-color: #008000;
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.3);
+}
+
+button {
+  background-color: #008000;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+button:hover {
+  background-color: #006400;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+button:disabled:hover {
+  background-color: #ccc;
+  box-shadow: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.box-1,
+.box-2,
+.box-3{
+    padding: 10px;
+}
+
+.mini-box{
+    height: 34px;
+}
