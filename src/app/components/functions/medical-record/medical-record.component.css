@@ -1,79 +1,105 @@
-/* General container styling */
+/* Contenedor general */
 .medical-record-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #f9fff9; /* Fondo similar al verde claro */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #ffffff, #f9fff9); /* Gradiente para un diseño más atractivo */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Títulos */
-.title{
+/* Título principal */
+.title {
   text-align: center;
-  font-size: 30px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #1e7d34;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* Títulos secundarios */
 h2, h3 {
-  color: #2b7a2b; /* Verde oscuro para encabezados */
+  color: #2e7d32;
   font-family: 'Roboto', sans-serif;
-  margin-bottom: 10px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #c8e6c9; /* Subrayado decorativo */
+  padding-bottom: 5px;
 }
 
+/* Contenedor de información básica */
 .info-base-container {
   display: flex;
-  justify-content: space-between; /* Espacia los elementos extremos */
-  align-items: center; /* Alinea verticalmente los elementos */
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
 .info-base-end {
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos */
-  gap: 10px; /* Espacio entre la fecha y el botón */
+  align-items: center;
+  gap: 15px;
 }
 
+/* Botón expandir */
 .expand-button {
-  margin: 0; /* Quita márgenes adicionales */
-  padding: 0; /* Quita relleno adicional */
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center; /* Asegura que el ícono esté centrado */
+  align-items: center;
   justify-content: center;
+  background-color: #28a745;
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
+.expand-button:hover {
+  background-color: #218838;
+  transform: scale(1.1);
+}
+
+.mat-icon {
+  font-size: 20px;
+}
 
 /* Tarjetas */
 mat-card {
   background-color: #f6fef6;
   border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 mat-card-title {
   font-weight: bold;
-  font-size: 1.5rem;
-  color: #006400;
-  width: 100%;
+  font-size: 1.6rem;
+  color: #2b7a2b;
 }
 
 mat-card-subtitle {
-  color: #95b395;
+  color: #7da27d;
   font-size: 1.2rem;
 }
 
 /* Botones */
 mat-card-actions button {
-  margin-right: 10px;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 button[mat-button] {
   background-color: #28a745;
   color: white;
   text-transform: uppercase;
-  border-radius: 5px;
-  padding: 8px 15px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
 }
 
 button[mat-button]:hover {
@@ -88,65 +114,38 @@ button[mat-button][color="warn"]:hover {
   background-color: #c82333;
 }
 
-/* Inputs */
-mat-form-field {
-  width: 100%;
-}
-
-textarea {
-  resize: none;
-}
-
 /* Prescripciones */
 .prescription {
-  border: 1px solid #e5e5e5;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
   background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Notas adicionales */
 .medical-record-container p {
-  color: #555555;
-  line-height: 1.5;
+  color: #555;
+  line-height: 1.6;
 }
 
-.mat-icon-button {
-  background-color: #28a745; /* Color de fondo verde */
-  color: white; /* Color del ícono */
-  border-radius: 50%; /* Hacer el botón circular */
-  width: 40px; /* Tamaño del botón */
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.mat-icon-button:hover {
-  background-color: #218838; /* Fondo más oscuro al pasar el mouse */
-  transform: scale(1.1); /* Efecto de zoom */
-}
-
-.mat-icon {
-  font-size: 24px; /* Tamaño del ícono */
-}
-
-
-/* Responsiveness */
+/* Responsividad */
 @media (max-width: 768px) {
   .medical-record-container {
-    padding: 10px;
+    padding: 15px;
   }
 
   mat-card {
-    padding: 10px;
+    padding: 15px;
+  }
+
+  h2, h3 {
+    font-size: 1.2rem;
   }
 
   button[mat-button] {
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-size: 0.9rem;
   }
 }
