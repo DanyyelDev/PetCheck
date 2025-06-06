@@ -1,36 +1,37 @@
 <div class="appointment-list-container">
   <h2 class="title">Lista de Citas</h2>
   <mat-table [dataSource]="appointments" class="mat-elevation-z8">
+
     <!-- Mascota -->
     <ng-container matColumnDef="pet">
       <mat-header-cell *matHeaderCellDef> Mascota </mat-header-cell>
-      <mat-cell *matCellDef="let appointment"> {{ appointment.pet || 'No especificado' }} </mat-cell>
+      <mat-cell *matCellDef="let appointment"> {{ appointment.pet_name || 'No especificado' }} </mat-cell>
     </ng-container>
 
     <!-- Veterinario -->
     <ng-container matColumnDef="veterinarian">
       <mat-header-cell *matHeaderCellDef> Veterinario </mat-header-cell>
-      <mat-cell *matCellDef="let appointment"> {{ appointment.veterinarian || 'No especificado' }} </mat-cell>
+      <mat-cell *matCellDef="let appointment"> {{ appointment.veterinarian_name || 'No especificado' }} </mat-cell>
     </ng-container>
 
     <!-- Fecha -->
     <ng-container matColumnDef="appointmentDate">
       <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
       <mat-cell *matCellDef="let appointment">
-        {{ appointment.appointmentDate | date: 'dd/MM/yyyy' }}
+        {{ appointment.appointment_date_time | date: 'dd/MM/yyyy' }}
       </mat-cell>
     </ng-container>
 
     <!-- Estado -->
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-      <mat-cell *matCellDef="let appointment"> {{ appointment.status || 'Pendiente' }} </mat-cell>
+      <mat-cell *matCellDef="let appointment"> {{ appointment.appointment_status || 'Pendiente' }} </mat-cell>
     </ng-container>
 
     <!-- Razón -->
     <ng-container matColumnDef="reason">
       <mat-header-cell *matHeaderCellDef> Razón </mat-header-cell>
-      <mat-cell *matCellDef="let appointment"> {{ appointment.reason || 'No especificado' }} </mat-cell>
+      <mat-cell *matCellDef="let appointment"> {{ appointment.appointment_reason || 'No especificado' }} </mat-cell>
     </ng-container>
 
     <!-- Notas -->

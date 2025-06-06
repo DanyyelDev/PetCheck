@@ -1,16 +1,18 @@
 <h2 class="title">Registro Médico</h2>
 
-<div class="medical-record-container" *ngFor="let record of record">
-  <mat-card>
+<div *ngIf="loading" class="loading">Cargando historial médico...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
 
+<div class="medical-record-container" *ngFor="let record of records">
+  <mat-card>
     <div class="info-base-container">
       <mat-card-header class="title-pet">
-        <mat-card-title>{{ record.pet.name }}</mat-card-title>
-        <mat-card-subtitle>{{ record.pet.breed }}</mat-card-subtitle>
+        <mat-card-title>{{ record.pet_name }}</mat-card-title>
+        <mat-card-subtitle>{{ record.breed }}</mat-card-subtitle>
       </mat-card-header>
 
       <div class="info-base-end">
-        <p><strong>Fecha:</strong> {{ formatDate(record.date, 'dd/MM/yyyy') }}</p>
+        <p><strong>Fecha:</strong> {{ formatDate(record.appointment_date, 'dd/MM/yyyy') }}</p>
         <button mat-icon-button (click)="record.showDetails = !record.showDetails" class="expand-button">
           <mat-icon>{{ record.showDetails ? 'expand_less' : 'expand_more' }}</mat-icon>
         </button>
@@ -18,18 +20,17 @@
     </div>
 
     <div *ngIf="record.showDetails">
-
       <mat-card-content>
         <section>
           <h3>Información del Veterinario</h3>
-          <p><strong>Nombre:</strong> {{ record.veterinarian.name }}</p>
-          <p><strong>Especialidad:</strong> {{ record.veterinarian.specialty }}</p>
+          <p><strong>Nombre:</strong> {{ record.veterinarian_name }}</p>
+          <p><strong>Especialidad:</strong> {{ record.veterinarian_specialization }}</p>
         </section>
 
         <section>
           <h3>Detalles de la Cita</h3>
-          <p><strong>Fecha:</strong> {{ formatDate(record.date, 'dd/MM/yyyy') }}</p>
-          <p><strong>Peso:</strong> {{ record.weight }} kg</p>
+          <p><strong>Fecha:</strong> {{ formatDate(record.appointment_date, 'dd/MM/yyyy') }}</p>
+          <p><strong>Peso:</strong> {{ record.pet_weight }} kg</p>
         </section>
 
         <section>
@@ -47,28 +48,16 @@
 
         <section>
           <h3>Prescripciones</h3>
-          <div *ngFor="let prescription of record.prescriptions" class="prescription">
-            <p><strong>Medicamento:</strong> {{ prescription.medication }}</p>
-            <p><strong>Dosificación:</strong> {{ prescription.dosage }}</p>
-            <p><strong>Frecuencia:</strong> {{ prescription.frequency }}</p>
-            <p>
-              <strong>Inicio:</strong> {{ formatDate(prescription.startDate, 'dd/MM/yyyy') }} -
-              <strong>Fin:</strong> {{ formatDate(prescription.endDate, 'dd/MM/yyyy') }}
-            </p>
-            <p><strong>Instrucciones:</strong> {{ prescription.instructions }}</p>
-            <p><strong>Estado:</strong> {{ prescription.active ? 'Activo' : 'Inactivo' }}</p>
-          </div>
+          <ul>
+            <li *ngFor="let prescription of record.prescriptions">{{ prescription }}</li>
+          </ul>
         </section>
 
         <section>
           <h3>Notas Adicionales</h3>
-          <p>{{ record.notes }}</p>
+          <p>{{ record.additional_notes }}</p>
         </section>
       </mat-card-content>
-      <!--       <mat-card-actions>
-        <button mat-button>Editar</button>
-        <button mat-button color="warn">Eliminar</button>
-      </mat-card-actions> -->
     </div>
   </mat-card>
 </div>

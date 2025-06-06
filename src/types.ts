@@ -12,12 +12,12 @@ export enum AppointmentStatus {
 
 export interface Appointment {
   id: string;
-  pet?: string;
-  veterinarian?: string;
-  appointmentDate: Date;
-  status?: string;
-  reason?: string;
-  notes?: string;
+  pet_id: string;
+  veterinarian_id: string;
+  date_time: Date;
+  status: string;
+  reason: string;
+  notes: string;
 }
 
 export interface Pet {
@@ -28,9 +28,21 @@ export interface Pet {
 
 export interface Veterinarian {
   id: string;
-  name: string;
-  specialty: string;
-  // ... otras propiedades de Veterinarian
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  specialization: string;
+  available_time_slots: string[];
+}
+
+export interface OwnerBack {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  address: string;
 }
 
 export interface Prescription {
@@ -57,4 +69,34 @@ export interface MedicalRecord {
   notes: string;
   relatedAppointment?: Appointment;
   showDetails?: boolean;
+}
+
+export interface User {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number?: string;
+  address?: string;
+  specialization?: string;
+  available_time_slots?: string[];
+  role: 'owner' | 'veterinarian';
+}
+
+export interface HistorialMedico {
+  owner_id: string;
+  owner_name: string;
+  pet_id: string;
+  pet_name: string;
+  breed: string;
+  appointment_date: string;
+  veterinarian_name: string;
+  veterinarian_specialization: string;
+  medical_record_date: string;
+  pet_weight: number;
+  diagnosis: string;
+  treatment: string;
+  additional_notes: string;
+  prescriptions: string[];
+  symptoms: string[];
 }

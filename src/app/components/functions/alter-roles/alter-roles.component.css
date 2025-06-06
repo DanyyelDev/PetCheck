@@ -1,0 +1,164 @@
+.alter-role-container {
+  padding: 20px;
+  background-color: #f0f2f5;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+}
+
+.user-list-section, .user-info-section {
+  flex: 1; /* Hace que las secciones ocupen el espacio disponible */
+  min-width: 300px; /* Ancho mínimo para evitar que se colapsen demasiado */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.user-list-section h3, .user-info-section h3 {
+  color: #00ff80;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px; /* Limita la altura de la lista para scroll */
+  overflow-y: auto; /* Agrega scroll si la lista es muy larga */
+}
+
+.user-list li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  color: #555;
+  font-size: 1.1em;
+}
+
+.user-list li:last-child {
+  border-bottom: none;
+}
+
+.user-list li:hover {
+  background-color: #e2f0ff;
+  transform: translateX(3px);
+}
+
+.user-list li.selected {
+  background-color: #00ff80;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.no-selection-message {
+  text-align: center;
+  color: #777;
+  padding: 50px 20px;
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+}
+
+.user-details-card {
+  padding: 20px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background-color: #fcfdff;
+}
+
+.detail-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-group label {
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 5px;
+  font-size: 0.95em;
+}
+
+.detail-group span {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #333;
+  font-size: 1em;
+}
+
+.current-role {
+  font-weight: bold;
+  color: #28a745; /* Color verde para el rol */
+}
+
+.role-change-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+.role-change-section label {
+  display: block;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.role-change-section select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+.role-change-section button {
+  background-color: #28a745; /* Verde para el botón de guardar */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.role-change-section button:hover {
+  background-color: #218838;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+  .user-list-section, .user-info-section {
+    min-width: unset; /* Elimina el min-width en pantallas pequeñas */
+  }
+}

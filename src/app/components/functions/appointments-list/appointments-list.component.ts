@@ -9,6 +9,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { AppointmentService } from '../../../services/functions/appointment-service';
+
+interface AppointmentDisplay {
+  appointment_id: string;
+  pet_name: string;
+  veterinarian_name: string;
+  appointment_date_time: Date;
+  appointment_status: string;
+  appointment_reason: string;
+  notes?: string;
+}
 
 @Component({
   selector: 'app-appointments-list',
@@ -27,52 +38,46 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './appointments-list.component.css'
 })
 export class AppointmentsListComponent {
-displayedColumns: string[] = ['pet', 'veterinarian', 'appointmentDate', 'status', 'reason', 'notes'];
-  appointments: Appointment[] = [
-    {
-      id: '1',
-      pet: 'Buddy',
-      veterinarian: 'Dr. Smith',
-      appointmentDate: new Date(2025, 4, 12),
-      status: 'Confirmada',
-      reason: 'Chequeo general',
-      notes: 'Asegurarse de revisar la cadera.'
-    },
-    {
-      id: '2',
-      pet: 'Max',
-      veterinarian: 'Dr. Johnson',
-      appointmentDate: new Date(2025, 4, 14),
-      status: 'Pendiente',
-      reason: 'Vacunación',
-      notes: 'Aplicar refuerzo de vacuna.'
-    },
-    {
-      id: '3',
-      pet: 'Bella',
-      veterinarian: 'Dr. Lee',
-      appointmentDate: new Date(2025, 4, 16),
-      status: 'Cancelada',
-      reason: 'Consulta de seguimiento',
-      notes: 'Cancelada por el cliente.'
-    },
-    {
-      id: '4',
-      pet: 'Lucy',
-      veterinarian: 'Dr. Green',
-      appointmentDate: new Date(2025, 4, 20),
-      status: 'Confirmada',
-      reason: 'Consulta dental',
-      notes: 'Revisar dientes y encías.'
-    },
-    {
-      id: '5',
-      pet: 'Charlie',
-      veterinarian: 'Dr. Brown',
-      appointmentDate: new Date(2025, 4, 25),
-      status: 'Pendiente',
-      reason: 'Revisión post-quirúrgica',
-      notes: 'Control de puntos de sutura.'
-    }
-  ];
+  appointments: AppointmentDisplay[] = [];
+  displayedColumns: string[] = ['pet', 'veterinarian', 'appointmentDate', 'status', 'reason', 'notes'];
+
+  // Aquí debes pasar el ownerId válido, puede ser dinámico según tu app
+  ownerId = 'some-owner-id';
+
+  constructor(private appointmentService: AppointmentService) {}
+
+  ngOnInit(): void {
+    //this.loadAppointments("82020b45-2bbe-4d64-a916-da98960b9644");
+    this.loadAppointments("f59a5527-66ed-4228-b00c-6b83697d3499");
+    
+  }
+
+  private translateStatus(status: string): string {
+    const map: { [key: string]: string } = {
+      scheduled: 'Confirmada',
+      pending: 'Pendiente',
+      canceled: 'Cancelada',
+      // más traducciones si quieres
+    };
+    return map[status.toLowerCase()] || status;
+  }
+
+  loadAppointments(ownerId: string): void {
+    this.appointmentService.getAppointmentsByOwner(ownerId).subscribe({
+      next: (data) => {
+        this.appointments = data.map(item => ({
+          appointment_id: item.appointment_id,
+          pet_name: item.pet_name,
+          veterinarian_name: item.veterinarian_name,
+          appointment_date_time: new Date(item.appointment_date_time),
+          appointment_status: this.translateStatus(item.appointment_status),
+          appointment_reason: item.appointment_reason,
+          notes: item.notes || ''
+        }));
+      },
+      error: (error) => {
+        console.error('Error cargando citas:', error);
+      }
+    });
+  }
 }

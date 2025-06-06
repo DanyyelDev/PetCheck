@@ -1,0 +1,59 @@
+<div class="alter-role-container">
+  <h2>Cambiar Rol de Usuario</h2>
+
+  <div class="content-wrapper">
+    <div class="user-list-section">
+      <h3>Usuarios Disponibles</h3>
+      <ul class="user-list">
+        <li *ngFor="let user of users"
+            [class.selected]="user.id === selectedUser?.id"
+            (click)="selectUser(user)">
+          {{ user.first_name }} {{ user.last_name }} ({{ user.role }})
+        </li>
+      </ul>
+    </div>
+
+    <div class="user-info-section">
+      <h3>Información del Usuario</h3>
+
+      <div *ngIf="selectedUser; else noUserSelected" class="user-details-card">
+        <div class="detail-group">
+          <label>ID:</label>
+          <span>{{ selectedUser.id }}</span>
+        </div>
+        <div class="detail-group">
+          <label>Nombre:</label>
+          <span>{{ selectedUser.first_name }} {{ selectedUser.last_name }}</span>
+        </div>
+        <div class="detail-group">
+          <label>Email:</label>
+          <span>{{ selectedUser.email }}</span>
+        </div>
+        <div class="detail-group" *ngIf="selectedUser.phone_number">
+          <label>Teléfono:</label>
+          <span>{{ selectedUser.phone_number }}</span>
+        </div>
+
+        <div class="detail-group" *ngIf="selectedUser.role === 'owner' && selectedUser.address">
+          <label>Dirección:</label>
+          <span>{{ selectedUser.address }}</span>
+        </div>
+
+        <div class="detail-group" *ngIf="selectedUser.role === 'veterinarian' && selectedUser.specialization">
+          <label>Especialidad:</label>
+          <span>{{ selectedUser.specialization }}</span>
+        </div>
+
+        <div class="detail-group">
+          <label>Rol:</label>
+          <span class="current-role">{{ selectedUser.role }}</span>
+        </div>
+        <button (click)="changeSessionUser()">Cambiar Usuario en Sesión</button>
+      </div>
+
+      <ng-template #noUserSelected>
+        <p class="no-selection-message">Selecciona un usuario de la lista para ver su información.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

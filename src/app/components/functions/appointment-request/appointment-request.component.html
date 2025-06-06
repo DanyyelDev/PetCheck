@@ -1,88 +1,58 @@
 <h2>Crear Nueva Cita</h2>
 <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="form-container">
-    <div class="container-box">
-        <div class="box-1">
-            <div class="form-group mini-box">
-                <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Mascota:</mat-label>
-                    <mat-select formControlName="pet">
-                        <mat-option *ngFor="let pet of pets" [value]="pet">{{ pet.name }}</mat-option>
-                    </mat-select>
-                    <mat-error
-                        *ngIf="appointmentForm.get('pet')?.invalid && (appointmentForm.get('pet')?.dirty || appointmentForm.get('pet')?.touched)">
-                        La mascota es requerida.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="box-2">
-            <div class="form-group mini-box">
-                <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Veterinario:</mat-label>
-                    <mat-select formControlName="veterinarian">
-                        <mat-option *ngFor="let veterinarian of veterinarians" [value]="veterinarian">{{
-                            veterinarian.name
-                            }}</mat-option>
-                    </mat-select>
-                    <mat-error
-                        *ngIf="appointmentForm.get('veterinarian')?.invalid && (appointmentForm.get('veterinarian')?.dirty || appointmentForm.get('veterinarian')?.touched)">
-                        El veterinario es requerido.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="box-3">
-            <div class="form-group mini-box">
-                <!-- Campo Fecha -->
-                <mat-form-field appearance="outline" class="form-field date-field">
-                    <mat-label>Fecha:</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Selecciona una fecha"
-                        (dateChange)="onDateChange($event)">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="appointmentForm.get('date')?.hasError('required')">
-                        La fecha es requerida.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="box-33">
-            <div class="form-group mini-box">
-                <!-- Campo Horas Disponibles -->
-                <mat-form-field appearance="outline" class="form-field time-field">
-                    <mat-label>Hora disponible:</mat-label>
-                    <mat-select formControlName="time" [disabled]="availableTimes.length === 0">
-                        <mat-option *ngFor="let time of availableTimes" [value]="time">
-                            {{ time }}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="appointmentForm.get('time')?.hasError('required')">
-                        La hora es requerida.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="box-4">
-            <div class="form-group-text">
-                <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Motivo de la Cita:</mat-label>
-                    <textarea matInput formControlName="reason"></textarea>
-                    <mat-error
-                        *ngIf="appointmentForm.get('reason')?.invalid && (appointmentForm.get('reason')?.dirty || appointmentForm.get('reason')?.touched)">
-                        El motivo es requerido.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="form-group-text">
-                <mat-form-field appearance="outline" class="form-field">
-                    <mat-label>Notas Adicionales:</mat-label>
-                    <textarea matInput formControlName="notes"></textarea>
-                </mat-form-field>
-            </div>
-
-        </div>
+  <div class="container-box">
+    <div class="box-1">
+      <div class="form-group mini-box">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Mascota:</mat-label>
+          <mat-select formControlName="pet">
+            <mat-option *ngFor="let pet of pets" [value]="pet.id">{{ pet.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="appointmentForm.get('pet')?.invalid">
+            La mascota es requerida.
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
-
-    <button mat-raised-button type="submit" [disabled]="!appointmentForm.valid">Crear Cita</button>
+    <div class="box-2">
+      <div class="form-group mini-box">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Veterinario:</mat-label>
+          <mat-select formControlName="veterinarian">
+            <mat-option *ngFor="let veterinarian of veterinarians" [value]="veterinarian.id">
+              {{ veterinarian.first_name + " " + veterinarian.last_name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="appointmentForm.get('veterinarian')?.invalid">
+            El veterinario es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="box-3">
+      <div class="form-group mini-box">
+        <mat-form-field appearance="outline" class="form-field date-field">
+          <mat-label>Fecha:</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Selecciona una fecha" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="appointmentForm.get('date')?.invalid">
+            La fecha es requerida.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="box-4">
+      <div class="form-group mini-box">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Motivo de la Cita:</mat-label>
+          <textarea matInput formControlName="reason"></textarea>
+          <mat-error *ngIf="appointmentForm.get('reason')?.invalid">
+            El motivo es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!appointmentForm.valid">Crear Cita</button>
 </form>
