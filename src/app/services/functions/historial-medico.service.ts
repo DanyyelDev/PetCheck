@@ -16,7 +16,8 @@ export class HistorialMedicoService {
   /**
    * Obtiene el historial médico para un dueño específico
    * @param ownerId - ID del dueño de las mascotas
-   * @returns Observable con la lista de detalles del historial médico
+   * @returns Observable con la lista de detalles del historial 
+   * 
    */
   getHistorialMedico(ownerId: string): Observable<HistorialMedico[]> {
     const url = `${this.baseUrl}/${ownerId}`;

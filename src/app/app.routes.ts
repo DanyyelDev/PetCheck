@@ -8,6 +8,8 @@ import { AppointmentRequestComponent } from './components/functions/appointment-
 import { MedicalRecordComponent } from './components/functions/medical-record/medical-record.component';
 import { AppointmentsListComponent } from './components/functions/appointments-list/appointments-list.component';
 import { AlterRolesComponent } from './components/functions/alter-roles/alter-roles.component';
+import { SegundaComponent } from './components/fases/segunda/segunda.component';
+import { PostmortenComponent } from './components/fases/postmorten/postmorten.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,10 +20,15 @@ export const routes: Routes = [
       { path: '', component: MainComponent },
       { path: 'about', component: AboutComponent },
       { path: 'Inicial', component: InicialesComponent },
+      { path: 'segunda-fase', component: SegundaComponent },
+      { path: 'postmortem', component: PostmortenComponent },
+
+
       { path: 'solicitar-cita', component: AppointmentRequestComponent },
       { path: 'mis-citas', component: AppointmentsListComponent },
       { path: 'historial-medico', component: MedicalRecordComponent },
-      { path: 'cambiar-rol', component: AlterRolesComponent },
+      { path: 'cambiar-rol', component: AlterRolesComponent },   
+      
       
 
       //Example

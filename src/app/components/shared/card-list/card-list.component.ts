@@ -12,12 +12,9 @@ export class CardListComponent {
   @ViewChild('cardContainer') cardContainer!: ElementRef;
 
   categories = [
-    { name: 'Inicial', author: '...........' },
-    { name: 'Actas', author: '...........' },
-    { name: 'Asignaciones', author: '...........' },
-    { name: 'Log de errores', author: '...........' },
-    { name: 'Informes', author: '...........' },
-    /* { name: 'Blockchain', author: 'CryptoMaster' } */
+    { name: 'Inicial', author: '...', path: 'Inicial' },
+    { name: '2° Fase', author: '...', path: 'segunda-fase' },
+    { name: 'Post Mortem', author: '...', path: 'postmortem' }
   ]; 
 
   constructor(private router: Router){}
